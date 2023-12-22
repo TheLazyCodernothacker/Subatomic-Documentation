@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "subatomic": "^0.0.5",
+    "subatomicjs": "^0.0.3"
+  }
+}
