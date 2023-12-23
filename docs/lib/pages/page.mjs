@@ -27,109 +27,90 @@ function render(build, data) {
 
   // Define the UI using JSX-like syntax
   let ui = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("nav", {
-    class: "bg-neutral-800 flex align-center p-4"
+    class: "p-4 shadow-lg"
   }, /*#__PURE__*/React.createElement("ul", {
-    class: "flex  align-center"
-  }, /*#__PURE__*/React.createElement("li", {
-    class: "text-white hover:bg-neutral-900 px-3 py-2 rounded mr-2"
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "/"
-  }, "Home")), /*#__PURE__*/React.createElement("li", {
-    class: "text-white hover:bg-neutral-900 px-3 py-2 rounded"
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "/docs"
-  }, "Docs")))), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement("div", {
-    class: "mx-auto text-center xl:p-12 lg:p-8 md:p-6 sm:p-4"
+    class: "flex space-x-4"
+  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "/",
+    class: "hover:bg-gray-100 px-4 py-3 rounded"
+  }, "Home")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
+    href: "/docs",
+    class: "hover:bg-gray-100 px-4 py-3 rounded"
+  }, "Docs")))), /*#__PURE__*/React.createElement("header", {
+    class: "p-2 sm:p-6 md:p-8 lg:p-12 xl:p-16 flex flex-wrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    class: "basis-96 grow"
+  }, /*#__PURE__*/React.createElement("h1", {
+    class: "font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
+  }, "Subatomic.js"), /*#__PURE__*/React.createElement("p", {
+    class: "text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
+  }, "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dynamic web apps."), /*#__PURE__*/React.createElement("button", {
+    class: "bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
+  }, "Docs")), /*#__PURE__*/React.createElement("div", {
+    class: "basis-32 grow flex align-center justify-center"
   }, /*#__PURE__*/React.createElement("img", {
     src: "/logo.svg",
-    alt: "Subatomc.js Logo",
-    lazy: "loading",
-    style: "max-width: 10rem",
-    class: "mx-auto lg:mt-12 md:mt-8 sm:mt-6 mb-2"
-  }), /*#__PURE__*/React.createElement("h1", {
-    class: "text-6xl font-bold text-violet-950"
-  }, "Subatomic.js"), /*#__PURE__*/React.createElement("p", {
-    class: "text-3xl mt-2 text-neutral-200"
-  }, "A minimalistic JS framework with PSR and SSR"), /*#__PURE__*/React.createElement("button", {
-    class: "bg-violet-950 text-white px-4 py-2 rounded mt-4 "
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "docs",
-    class: "text-xl"
-  }, "Get Started")), /*#__PURE__*/React.createElement("h1", {
-    class: "text-white text-4xl mt-8"
-  }, "Blazing Speeds"), /*#__PURE__*/React.createElement("p", {
-    class: "text-2xl mt-4 text-white"
-  }, "Subatomic.js has extremely small bundle sizes which can bet under 2kb gzipped."), /*#__PURE__*/React.createElement("h1", {
-    class: "text-white text-4xl mt-8"
-  }, "interactivity and SEO"), /*#__PURE__*/React.createElement("p", {
-    class: "text-2xl mt-4 text-white"
-  }, "Subatomic.js uses pre-rendering to make your site SEO friendly while still maintaining interactivity and not hiding interactive content, unlike Next.js and other SSR frameworks."), /*#__PURE__*/React.createElement("div", {
-    class: "flex mt-8 flex-wrap justify"
-  }, /*#__PURE__*/React.createElement("div", {
-    class: "p-4 basis-48 grow overflow-x-scroll"
+    class: "w-1/2 pt-4"
+  }))), /*#__PURE__*/React.createElement("main", {
+    class: "p-2 sm:p-6 md:p-8 lg:p-12 xl:p-16 "
   }, /*#__PURE__*/React.createElement("h1", {
-    class: "text-white text-2xl"
-  }, "Seamless State Management"), /*#__PURE__*/React.createElement("pre", {
-    class: "language-jsx bg-neutral-800 text-white text-left overflow-sx-croll p-4 mt-4"
-  }, /*#__PURE__*/React.createElement("code", {
-    id: "code1",
-    class: "language-jsx text-left"
-  }))), /*#__PURE__*/React.createElement("div", {
-    class: " p-4 basis-48 grow"
-  }, /*#__PURE__*/React.createElement("h1", {
-    class: "text-white text-2xl"
-  }, "Output:"), /*#__PURE__*/React.createElement("button", {
-    class: "bg-violet-950 text-white px-4 py-2 rounded mt-4",
-    onclick: () => {
+    class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold"
+  }, "SEO, Performance, and Interactivity"), /*#__PURE__*/React.createElement("p", {
+    class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
+  }, "Subatomic.js uses PSR to make sure your dynamic content is indexed by search bots and SSR to make data fetching and rendering faster. You also get to have interactivity without sacrificing SEO or performance."), /*#__PURE__*/React.createElement("h1", {
+    class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold"
+  }, "JSX and Express"), /*#__PURE__*/React.createElement("p", {
+    class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
+  }, "Subatomic.js uses JSX to make it easy to create dynamic UIs along with the modifications of using HTML attributes like class. Subatomic.js is powered by Express, so you can use all of the features of Express along with backend libraries like Passport.js."), /*#__PURE__*/React.createElement("h1", {
+    class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold mb-4"
+  }, "Let's see it in action!"), /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
+    class: "language-jsx"
+  }, `<button \n  onclick={() => {variables.cookies++;render();}}\n  class="bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 mr-4"\n>\n  Component found in Root\n</button>\n<Button variables={variables}>Component found in components folder</Button>\n<h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 mb-4">\n  Cookies: {variables.cookies}\n</h1>`.replaceAll("<", "&lt;").replaceAll(">", "&gt;"))), /*#__PURE__*/React.createElement("button", {
+    class: "bg-violet-950 bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 mr-4",
+    onClick: () => {
       variables.cookies++;
       render();
     }
-  }, "Component found in root"), /*#__PURE__*/React.createElement(Button, {
+  }, "Component found in Root"), /*#__PURE__*/React.createElement(Button, {
     variables: variables
-  }), /*#__PURE__*/React.createElement("h1", {
-    class: "text-white text-xl mt-4"
-  }, "You have $", variables.cookies, " Cookies"))), /*#__PURE__*/React.createElement("div", {
-    class: "flex flex-wrap mt-8"
-  }, /*#__PURE__*/React.createElement("div", {
-    class: "basis-48 grow p-4"
-  }, /*#__PURE__*/React.createElement("h1", {
-    class: "text-white text-2xl"
-  }, "More HTML-like syntax"), /*#__PURE__*/React.createElement("p", {
-    class: "text-white text-lg mt-4"
-  }, "Subatomic.js uses JSX, but keeps the attributes so class is still class, not className. You can also reference elements with their ID, not using refs.")), /*#__PURE__*/React.createElement("div", {
-    class: "basis-48 grow"
-  }, /*#__PURE__*/React.createElement("h1", {
-    class: "text-white text-2xl"
-  }, "Output:"), /*#__PURE__*/React.createElement("button", {
-    class: "bg-violet-950 text-white px-4 py-2 rounded mt-4",
+  }, "Component found in components folder"), /*#__PURE__*/React.createElement("h1", {
+    class: "text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 mb-4"
+  }, "Cookies: ", variables.cookies), /*#__PURE__*/React.createElement("p", {
+    class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
+  }, "Subatomic.js makes development easy with JSX, and it also works with tailwind and removing unneccessary classes. State management is also seamless, you only have to pass the state object around the component tree."), /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
+    class: "language-jsx"
+  }, `<input\n  id=\"input\"\n  type=\"text\"\n  oninput={() => {\n    variables.input = this.value;\n  }}\n  value={variables.input}\n  class=\"border-2 border-gray-300 p-2 rounded\"\n/>\n<button\n  onclick={() => {\n    variables.todos.push(input.value);\n    render();\n  }}\n  class=\"bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4\"\n>\n  Add Todo\n</button>\n<ul class=\"list-disc list-inside\">\n  {variables.todos.map((a) => {\n    return <li>{a}</li>;\n  })}\n</ul>`.replaceAll("<", "&lt;").replaceAll(">", "&gt;"))), /*#__PURE__*/React.createElement("input", {
+    id: "input",
+    type: "text",
+    oninput: () => {
+      variables.input = this.value;
+    },
+    value: variables.input,
+    class: "border-2 border-gray-300 p-2 rounded"
+  }), /*#__PURE__*/React.createElement("button", {
     onclick: () => {
-      variables.cookies++;
+      variables.todos.push(input.value);
       render();
-    }
-  }, "Component found in root"), /*#__PURE__*/React.createElement(Button, {
-    variables: variables
-  }), /*#__PURE__*/React.createElement("h1", {
-    class: "text-white text-xl mt-4"
-  }, "You have $", variables.cookies, " Cookies"))))));
+    },
+    class: "bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4"
+  }, "Add Todo"), /*#__PURE__*/React.createElement("ul", {
+    class: "list-disc list-inside"
+  }, variables.todos.map(a => {
+    return /*#__PURE__*/React.createElement("li", null, a);
+  }))));
   // If the document object is defined (i.e., if this code is running in a browser environment)
   if (typeof document !== "undefined") {
     // Call the useEffect function with a function to log a message to the console and a dependencies array
+
     useEffect(() => {
       console.log("use effect to run side effects");
     }, ["cookies"]);
     // Set the innerHTML of the body element to the UI string
     document.body.innerHTML = parseArray(ui);
-    code1.innerText = `<button
-  class="bg-violet-950 text-white px-4 py-2 rounded mt-4"
-  onclick={() => {
-    variables.cookies++;
-    render();
-  }}
->
-  Component found in root
-</button>
-<Button variables={variables} />
-`;
+    if (typeof Prism === "object") {
+      console.log("highlighting");
+      Prism.highlightAll();
+    }
     // Update the effectVariables object with the current values of the variables
     Object.keys(variables).forEach(a => {
       effectVariables[a] = variables[a];
@@ -159,9 +140,7 @@ function state() {
 
 // Define an init function
 async function init() {
-  try {
-    document.body.classList.add("bg-neutral-900");
-  } catch (e) {}
+  try {} catch (e) {}
 }
 
 // Define the page object with the render function, state function, init function, and other properties
@@ -174,8 +153,8 @@ const page = {
   functions: [useEffect, handleChange],
   title: "App created with Subatomic.js",
   description: "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dyanmic web apps.",
-  css: [],
-  js: ["https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-javascript.min.js"]
+  css: ["https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css"],
+  js: ["/prism.js"]
 };
 
 // Define a useEffect function
