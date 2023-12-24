@@ -4,7 +4,12 @@ import Button from "../components/Button.mjs";
 
 // Initialize an empty variables object
 let variables = {};
-
+async function fetchJSON(req, res, variables) {
+  const data = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const json = await data.json();
+  variables.json = json;
+  return variables;
+}
 // Define a function to handle changes in the input field
 function handleChange(event) {
   event.preventDefault();
@@ -92,12 +97,26 @@ function render(build, data) {
       variables.todos.push(input.value);
       render();
     },
-    class: "bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4"
-  }, "Add Todo"), /*#__PURE__*/React.createElement("ul", {
+    class: "bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 ml-2"
+  }, "Add Todo"), /*#__PURE__*/React.createElement("button", {
+    onclick: () => {
+      variables.todos.pop();
+      render();
+    },
+    class: "bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 ml-2"
+  }, "Remove Todo"), /*#__PURE__*/React.createElement("ul", {
     class: "list-disc list-inside"
   }, variables.todos.map(a => {
     return /*#__PURE__*/React.createElement("li", null, a);
-  }))));
+  })), /*#__PURE__*/React.createElement("h1", {
+    class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold"
+  }, "So what are you waiting for?"), /*#__PURE__*/React.createElement("p", {
+    class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
+  }, "Subatomic.js is the perfect framework for creating dynamic web apps with SEO, performance, and interactivity."), /*#__PURE__*/React.createElement("button", {
+    class: "bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
+  }, "Docs")), /*#__PURE__*/React.createElement("footer", {
+    class: "shadow-lg p-4 text-center bg-gray-100"
+  }, "&copy Subatomic 2023"));
   // If the document object is defined (i.e., if this code is running in a browser environment)
   if (typeof document !== "undefined") {
     // Call the useEffect function with a function to log a message to the console and a dependencies array
@@ -149,7 +168,7 @@ const page = {
   state: state,
   init: init,
   components: [Cookies, Button],
-  middleware: [],
+  middleware: [fetchJSON],
   functions: [useEffect, handleChange],
   title: "App created with Subatomic.js",
   description: "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dyanmic web apps.",

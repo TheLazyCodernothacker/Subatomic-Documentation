@@ -20,10 +20,16 @@ function handleImport(req, res, a, parameters) {
     let continueBuild = true;
 
     // Run all middleware functions
+    var variables = {};
     defaultData.middleware.forEach((a) => {
+      console.log("running middleware");
       try {
         // If middleware function returns 'done', stop the build
-        if (a(req, res) === "done") {
+        a(req, res, variables).then((newVariables) => {
+          console.log(newVariables);
+          Object.assign(variables, newVariables);
+        });
+        if (a(req, res, variables) === "done") {
           continueBuild = false;
         }
       } catch (e) {
@@ -38,6 +44,7 @@ function handleImport(req, res, a, parameters) {
     }
 
     // Add parameters and other data to the data object
+    data.props = variables;
     data.parameters = parameters;
     data.js = defaultData.js;
     data.css = defaultData.css;
