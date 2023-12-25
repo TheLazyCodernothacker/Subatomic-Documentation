@@ -2,5 +2,10 @@
   "dependencies": {
     "subatomic": "^0.0.5",
     "subatomicjs": "^0.0.3"
+  },
+  "devDependencies": {
+    "ejs-webpack-loader": "^2.2.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }

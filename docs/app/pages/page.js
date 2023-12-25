@@ -218,7 +218,7 @@ const page = {
   state: state,
   init: init,
   components: [Cookies, Button],
-  middleware: [fetchJSON],
+  middleware: [],
   functions: [useEffect, handleChange],
   title: "App created with Subatomic.js",
   description:

@@ -168,7 +168,7 @@ const page = {
   state: state,
   init: init,
   components: [Cookies, Button],
-  middleware: [fetchJSON],
+  middleware: [],
   functions: [useEffect, handleChange],
   title: "App created with Subatomic.js",
   description: "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dyanmic web apps.",
