@@ -59,7 +59,7 @@ function render(build, data) {
           </button>
         </div>
         <div class="basis-32 grow flex align-center justify-center">
-          <img src="/logo.svg" class="w-1/2 pt-4" />
+          <img src="/logo.svg" class="w-1/2 pt-4" alt="Subatomicjs Logo" />
         </div>
       </header>
       <main class="p-2 sm:p-6 md:p-8 lg:p-12 xl:p-16 ">

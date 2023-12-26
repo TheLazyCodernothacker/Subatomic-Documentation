@@ -55,7 +55,8 @@ function render(build, data) {
     class: "basis-32 grow flex align-center justify-center"
   }, /*#__PURE__*/React.createElement("img", {
     src: "/logo.svg",
-    class: "w-1/2 pt-4"
+    class: "w-1/2 pt-4",
+    alt: "Subatomicjs Logo"
   }))), /*#__PURE__*/React.createElement("main", {
     class: "p-2 sm:p-6 md:p-8 lg:p-12 xl:p-16 "
   }, /*#__PURE__*/React.createElement("h1", {
