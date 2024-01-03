@@ -14,7 +14,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 // Function to handle the import of a page
-function handleImport(req, res, a, parameters) {
+async function handleImport(req, res, a, parameters) {
   try {
     // Initialize data object and get default data from imported module
     let data = {};
@@ -23,22 +23,26 @@ function handleImport(req, res, a, parameters) {
 
     // Run all middleware functions
     var variables = {};
-    defaultData.middleware.forEach((a) => {
-      console.log("running middleware");
-      try {
-        // If middleware function returns 'done', stop the build
-        a(req, res, variables).then((newVariables) => {
-          console.log(newVariables);
+    async function runMiddleware() {
+      for (const a of defaultData.middleware) {
+        try {
+          // Wait for the middleware function to complete before moving on
+          const newVariables = await a(req, res, variables);
           Object.assign(variables, newVariables);
-        });
-        if (a(req, res, variables) === "done") {
+
+          // If middleware function returns 'done', stop the build
+          if (newVariables === "done") {
+            continueBuild = false;
+            break;
+          }
+        } catch (e) {
+          console.log(e);
           continueBuild = false;
+          break;
         }
-      } catch (e) {
-        console.log(e);
-        continueBuild = false;
       }
-    });
+    }
+    await runMiddleware();
 
     // If build was stopped, return without sending a response
     if (!continueBuild) {
@@ -98,11 +102,12 @@ function initPages() {
 
   // For each page, set up the routes
   pages.forEach((page) => {
-    console.log(page);
-    let routes = page.split("/");
+    let routes = page.split(path.sep);
     routes.pop();
+    console.log(routes);
     routes.shift();
-
+    routes.shift();
+    console.log(routes);
     // Check for duplicate routes
     let setRoutes = new Set(routes);
     if (setRoutes.size !== routes.length) {
@@ -111,6 +116,7 @@ function initPages() {
     }
 
     // If there are routes, set up the route for the page
+    console.log(routes);
     if (routes.length !== 0) {
       let getRoutes = routes.map((route) => {
         if (route[0] === "[" && route[route.length - 1] === "]") {
@@ -118,7 +124,7 @@ function initPages() {
         }
         return route;
       });
-
+      console.log(getRoutes);
       app.get(`/${getRoutes.join("/")}`, (req, res) => {
         let parameters = {};
         console.log(getRoutes);
@@ -128,7 +134,7 @@ function initPages() {
           }
         });
         console.log(parameters);
-        import(`./lib/${routes.join("/")}/page.mjs`).then((a) => {
+        import(`./lib/pages/${routes.join("/")}/page.mjs`).then((a) => {
           handleImport(req, res, a, parameters);
         });
       });
@@ -197,7 +203,6 @@ function build(
     finalUI: parseArray(ui, true),
     parseArray: parseArray,
   };
-  console.log(newData.createElement.toString());
   data.res.render("main", newData);
   // Build the HTML content
 }

@@ -1,6 +1,6 @@
 // Import necessary modules
-import React from "../../createElement.js";
-import Button from "../components/Button.mjs";
+import React from "../../../createElement.js";
+import Button from "../../../lib/components/Button.mjs";
 
 // Initialize an empty variables object
 let variables = {};
@@ -49,14 +49,13 @@ function render(build, data) {
     class: "font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
   }, "Subatomic.js"), /*#__PURE__*/React.createElement("p", {
     class: "text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dynamic web apps."), /*#__PURE__*/React.createElement("a", {
-    href: "/tutorial",
+  }, "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dynamic web apps."), /*#__PURE__*/React.createElement("button", {
     class: "bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
   }, "Tutorial")), /*#__PURE__*/React.createElement("div", {
     class: "basis-32 grow flex align-center justify-center"
   }, /*#__PURE__*/React.createElement("img", {
     src: "/logo.svg",
-    class: "w-1/2 pt-4",
+    class: "w-1/2 h-1/2 pt-4",
     alt: "Subatomicjs Logo"
   }))), /*#__PURE__*/React.createElement("main", {
     class: "p-2 sm:p-6 md:p-8 lg:p-12 xl:p-16 "
@@ -136,9 +135,8 @@ function render(build, data) {
     class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold"
   }, "So what are you waiting for?"), /*#__PURE__*/React.createElement("p", {
     class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js is the perfect framework for creating dynamic web apps with SEO, performance, and interactivity."), /*#__PURE__*/React.createElement("a", {
-    href: "/tutorial",
-    lass: "bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
+  }, "Subatomic.js is the perfect framework for creating dynamic web apps with SEO, performance, and interactivity."), /*#__PURE__*/React.createElement("button", {
+    class: "bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
   }, "Tutorial")), /*#__PURE__*/React.createElement("footer", {
     class: "shadow-lg p-4 text-center bg-gray-100"
   }, "&copy Subatomic 2023"));

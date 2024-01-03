@@ -1,6 +1,6 @@
 // Import necessary modules
 import React from "@/createElement.js";
-import Button from "../components/Button.mjs";
+import Button from "@/lib/components/Button.mjs";
 
 // Initialize an empty variables object
 let variables = {};
@@ -54,15 +54,16 @@ function render(build, data) {
             Subatomic.js is a minimalistic JS framework with PSR and SSR for
             creating dynamic web apps.
           </p>
-          <a
-            href="/tutorial"
-            class="bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-          >
+          <button class="bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10">
             Tutorial
-          </a>
+          </button>
         </div>
         <div class="basis-32 grow flex align-center justify-center">
-          <img src="/logo.svg" class="w-1/2 pt-4" alt="Subatomicjs Logo" />
+          <img
+            src="/logo.svg"
+            class="w-1/2 h-1/2 pt-4"
+            alt="Subatomicjs Logo"
+          />
         </div>
       </header>
       <main class="p-2 sm:p-6 md:p-8 lg:p-12 xl:p-16 ">
@@ -203,12 +204,9 @@ function render(build, data) {
           Subatomic.js is the perfect framework for creating dynamic web apps
           with SEO, performance, and interactivity.
         </p>
-        <a
-          href="/tutorial"
-          lass="bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-        >
+        <button class="bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10">
           Tutorial
-        </a>
+        </button>
       </main>
 
       <footer class="shadow-lg p-4 text-center bg-gray-100">
