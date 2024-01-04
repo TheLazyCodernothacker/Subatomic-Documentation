@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.3.6 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -32,9 +32,11 @@
 4. Use the user's configured `sans` font-family by default.
 5. Use the user's configured `sans` font-feature-settings by default.
 6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
 */
 
-html {
+html,
+:host {
   line-height: 1.5;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -44,12 +46,14 @@ html {
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
   font-variation-settings: normal;
   /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  /* 7 */
 }
 
 /*
@@ -560,12 +564,12 @@ video {
   margin-top: 1rem;
 }
 
-.flex {
-  display: flex;
+.mt-8 {
+  margin-top: 2rem;
 }
 
-.h-1\/2 {
-  height: 50%;
+.flex {
+  display: flex;
 }
 
 .w-1\/2 {
@@ -622,6 +626,11 @@ video {
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.bg-gray-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }
 
 .bg-violet-950 {
@@ -693,6 +702,11 @@ video {
   font-weight: 600;
 }
 
+.text-violet-950 {
+  --tw-text-opacity: 1;
+  color: rgb(46 16 101 / var(--tw-text-opacity));
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -718,6 +732,14 @@ video {
     margin-top: 1.5rem;
   }
 
+  .sm\:p-2 {
+    padding: 0.5rem;
+  }
+
+  .sm\:p-4 {
+    padding: 1rem;
+  }
+
   .sm\:p-6 {
     padding: 1.5rem;
   }
@@ -732,6 +754,11 @@ video {
     line-height: 2.25rem;
   }
 
+  .sm\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
   .sm\:text-5xl {
     font-size: 3rem;
     line-height: 1;
@@ -740,6 +767,11 @@ video {
   .sm\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+
+  .sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 
   .sm\:text-xl {
@@ -755,6 +787,14 @@ video {
 
   .md\:mt-8 {
     margin-top: 2rem;
+  }
+
+  .md\:p-4 {
+    padding: 1rem;
+  }
+
+  .md\:p-6 {
+    padding: 1.5rem;
   }
 
   .md\:p-8 {
@@ -785,11 +825,20 @@ video {
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 
 @media (min-width: 1024px) {
   .lg\:mt-10 {
     margin-top: 2.5rem;
+  }
+
+  .lg\:mt-6 {
+    margin-top: 1.5rem;
   }
 
   .lg\:mt-8 {
@@ -798,6 +847,15 @@ video {
 
   .lg\:p-12 {
     padding: 3rem;
+  }
+
+  .lg\:p-8 {
+    padding: 2rem;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .lg\:text-3xl {
@@ -835,6 +893,10 @@ video {
     margin-top: 3rem;
   }
 
+  .xl\:p-10 {
+    padding: 2.5rem;
+  }
+
   .xl\:p-16 {
     padding: 4rem;
   }
@@ -842,6 +904,11 @@ video {
   .xl\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .xl\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .xl\:text-4xl {
@@ -860,6 +927,22 @@ video {
   }
 
   .xl\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:p-12 {
+    padding: 3rem;
+  }
+
+  .\32xl\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .\32xl\:text-8xl {
     font-size: 6rem;
     line-height: 1;
   }

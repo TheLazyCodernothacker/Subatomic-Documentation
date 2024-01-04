@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@babel/preset-typescript": "^7.23.3",
     "autoprefixer": "^10.4.16",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -7,7 +8,8 @@
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "module-alias": "^2.2.3",
+    "html-minifier": "^4.0.0",
+    "minify": "^11.0.1",
     "nodemon": "^3.0.2",
     "passport": "^0.7.0",
     "passport-github": "^1.1.0",
@@ -16,15 +18,18 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
+  "bin": {
+    "newpage": "./bin/newpage.js"
+  },
   "name": "subatomicjs",
   "description": "Subatomic JS is the minimalist Full-stack framework with SSR and subatomic bundles.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.js",
   "scripts": {
-    "watch:css": "npx tailwindcss -i ./input.css -o ./public/output.css --watch",
     "start:server": "nodemon index.js",
-    "start:babel": "babel app --out-dir lib --out-file-extension .mjs --watch",
-    "start": "npm-run-all --parallel watch:css start:server start:babel"
+    "start:babel": "babel --extensions \".js,.ts,.tsx\" app --out-dir lib --out-file-extension .mjs --watch",
+    "start": "npm-run-all --parallel watch:css start:server start:babel",
+    "watch:css": "npx tailwindcss -i ./input.css -o ./public/output.css --watch"
   },
   "keywords": [
     "framework",
@@ -46,26 +51,16 @@
     "rendering",
     "render"
   ],
-  "_moduleAliases": {
-    "@": "docs"
-  },
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.23.4",
-    "@babel/core": "^7.23.6",
-    "@babel/preset-env": "^7.23.6",
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.7",
     "@babel/preset-react": "^7.23.3",
     "babel-plugin-module-resolver": "^5.0.0",
-    "ejs-compiled-loader": "^3.1.0",
-    "html-loader": "^4.2.0",
-    "html-webpack-plugin": "^5.6.0",
     "npm-run-all": "^4.1.5",
     "parcel": "^2.10.3",
-    "postcss-cli": "^11.0.0",
-    "tailwindcss": "^3.3.6",
-    "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "tailwindcss": "^3.4.0"
   }
 }

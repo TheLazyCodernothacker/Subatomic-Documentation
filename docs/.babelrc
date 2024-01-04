@@ -1,10 +1,10 @@
 {
-  "presets": ["@babel/preset-react"],
+  "presets": ["@babel/preset-react", "@babel/preset-typescript"],
   "plugins": [
     [
       "module-resolver",
       {
-        "root": ["./docs"],
+        "root": ["./"],
         "alias": {
           "@": "./"
         }

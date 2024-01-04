@@ -1,6 +1,7 @@
 // Import necessary modules
 import React from "@/createElement.js";
-import Button from "@/lib/components/Button.mjs";
+import Button from "../components/Button.mjs";
+import Navbar from "../components/Navbar.mjs";
 
 // Initialize an empty variables object
 let variables = {};
@@ -31,20 +32,7 @@ function render(build, data) {
   // Define the UI using JSX-like syntax
   let ui = (
     <div>
-      <nav class="p-4 shadow-lg">
-        <ul class="flex space-x-4">
-          <li>
-            <a href="/" class="hover:bg-gray-100 px-4 py-3 rounded">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="/tutorial" class="hover:bg-gray-100 px-4 py-3 rounded">
-              Tutorial
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <Navbar />
       <header class="p-2 sm:p-6 md:p-8 lg:p-12 xl:p-16 flex flex-wrap">
         <div class="basis-96 grow">
           <h1 class="font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10">
@@ -55,15 +43,11 @@ function render(build, data) {
             creating dynamic web apps.
           </p>
           <button class="bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10">
-            Tutorial
+            <a href="/tutorial">Tutorial</a>
           </button>
         </div>
         <div class="basis-32 grow flex align-center justify-center">
-          <img
-            src="/logo.svg"
-            class="w-1/2 h-1/2 pt-4"
-            alt="Subatomicjs Logo"
-          />
+          <img src="/logo.svg" class="w-1/2 pt-4" alt="Subatomicjs Logo" />
         </div>
       </header>
       <main class="p-2 sm:p-6 md:p-8 lg:p-12 xl:p-16 ">
@@ -89,7 +73,7 @@ function render(build, data) {
         </h1>
         <pre>
           <code class="language-jsx">
-            {`<button \n  onclick={() => {variables.cookies++;render();}}\n  class="bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 mr-4"\n>\n  Component found in Root\n</button>\n<Button variables={variables}>Component found in components folder</Button>\n<h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 mb-4">\n  Cookies: {variables.cookies}\n</h1>`
+            {`<button \n  onclick={() => {variables.cookies++;render();}}\n  class="bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 mr-4"\n>\n  Component found in Root\n</button>\n<Button variables={variables} />\n<h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 mb-4">\n  Cookies: {variables.cookies}\n</h1>`
               .replaceAll("<", "&lt;")
               .replaceAll(">", "&gt;")}
           </code>
@@ -103,9 +87,7 @@ function render(build, data) {
         >
           Component found in Root
         </button>
-        <Button variables={variables}>
-          Component found in components folder
-        </Button>
+        <Button variables={variables} />
         <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 mb-4">
           Cookies: {variables.cookies}
         </h1>
@@ -205,7 +187,7 @@ function render(build, data) {
           with SEO, performance, and interactivity.
         </p>
         <button class="bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10">
-          Tutorial
+          <a href="/tutorial">Tutorial</a>
         </button>
       </main>
 
@@ -243,7 +225,7 @@ state();
 
 // Define a Cookies component that returns an h1 element with the number of cookies
 function Cookies() {
-  return `<h1>${variables.cookies}</h1>`;
+  return <h1>Cookies: {variables.cookies}</h1>;
 }
 
 // Define a state function to initialize the variables
@@ -265,7 +247,7 @@ const page = {
   render: render,
   state: state,
   init: init,
-  components: [Cookies, Button],
+  components: [Cookies, Button, Navbar],
   middleware: [fetchJSON],
   functions: [useEffect, handleChange],
   title: "App created with Subatomic.js",

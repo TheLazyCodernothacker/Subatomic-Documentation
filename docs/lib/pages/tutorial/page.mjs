@@ -1,22 +1,9 @@
 // Import necessary modules
 import React from "../../../createElement.js";
-import Button from "../../../lib/components/Button.mjs";
+import Navbar from "../../../lib/components/Navbar.mjs";
 
 // Initialize an empty variables object
 let variables = {};
-async function fetchJSON(req, res, variables) {
-  const data = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-  const json = await data.json();
-  variables.json = json;
-  return variables;
-}
-// Define a function to handle changes in the input field
-function handleChange(event) {
-  event.preventDefault();
-  console.log("change");
-  // Update the input variable with the new value from the input field
-  variables.input = event.target.value;
-}
 
 // Define the render function
 function render(build, data) {
@@ -31,132 +18,114 @@ function render(build, data) {
   }
 
   // Define the UI using JSX-like syntax
-  let ui = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("nav", {
-    class: "p-4 shadow-lg"
-  }, /*#__PURE__*/React.createElement("ul", {
-    class: "flex space-x-4"
-  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "/",
-    class: "hover:bg-gray-100 px-4 py-3 rounded"
-  }, "Home")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "/tutorial",
-    class: "hover:bg-gray-100 px-4 py-3 rounded"
-  }, "Tutorial")))), /*#__PURE__*/React.createElement("header", {
-    class: "p-2 sm:p-6 md:p-8 lg:p-12 xl:p-16 flex flex-wrap"
-  }, /*#__PURE__*/React.createElement("div", {
-    class: "basis-96 grow"
+  let ui = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Navbar, null), /*#__PURE__*/React.createElement("main", {
+    class: "p-4 sm:p-4 md:p-6 lg:p-8 xl:p-10 2xl:p-12"
   }, /*#__PURE__*/React.createElement("h1", {
-    class: "font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js"), /*#__PURE__*/React.createElement("p", {
-    class: "text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dynamic web apps."), /*#__PURE__*/React.createElement("button", {
-    class: "bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Tutorial")), /*#__PURE__*/React.createElement("div", {
-    class: "basis-32 grow flex align-center justify-center"
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "/logo.svg",
-    class: "w-1/2 h-1/2 pt-4",
-    alt: "Subatomicjs Logo"
-  }))), /*#__PURE__*/React.createElement("main", {
-    class: "p-2 sm:p-6 md:p-8 lg:p-12 xl:p-16 "
-  }, /*#__PURE__*/React.createElement("h1", {
-    class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold"
-  }, "SEO, Performance, and Interactivity"), /*#__PURE__*/React.createElement("p", {
-    class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js uses PSR to make sure your dynamic content is indexed by search bots and SSR to make data fetching and rendering faster. You also get to have interactivity without sacrificing SEO or performance."), /*#__PURE__*/React.createElement("h1", {
-    class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold"
-  }, "JSX and Express"), /*#__PURE__*/React.createElement("p", {
-    class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js uses JSX to make it easy to create dynamic UIs along with the modifications of using HTML attributes like class. Subatomic.js is powered by Express, so you can use all of the features of Express along with backend libraries like Passport.js."), /*#__PURE__*/React.createElement("h1", {
-    class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold mb-4"
-  }, "Let's see it in action!"), /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
+    class: "text-4xl sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-8xl font-bold"
+  }, "How to ", /*#__PURE__*/React.createElement("span", {
+    class: "text-violet-950"
+  }, "Subatomic.js")), /*#__PURE__*/React.createElement("p", {
+    class: "mt-4 lg:mt-6 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+  }, "This is your comprohensive guide to using Subatomic.js. This guide will cover everything you need to know to create a full-stack app with Subatomic.js."), /*#__PURE__*/React.createElement("h2", {
+    class: "mt-8 lg:mt-10 text-2xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-semibold"
+  }, "Getting started"), /*#__PURE__*/React.createElement("p", {
+    class: "mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl"
+  }, "To get started run this command in your terminal:"), /*#__PURE__*/React.createElement("pre", {
+    class: "sm:p-2 md:p-4 mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl bg-gray-400 p-4 rounded"
+  }, "npx create-subatomic-app@latest"), /*#__PURE__*/React.createElement("p", {
+    class: "mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl"
+  }, "Then you can choose the name and whether or not you want to use Typescript and/or Tailwind. (Using Typescript can be more difficult due to Typescript not understand Subatomic.js too well and underlining functions that it doesn't think exist.)"), /*#__PURE__*/React.createElement("p", {
+    class: "mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl"
+  }, "Once you have created your app, open the new folder and run:"), /*#__PURE__*/React.createElement("pre", {
+    class: "sm:p-2 md:p-4 mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl bg-gray-400 p-4 rounded"
+  }, "npm run start"), /*#__PURE__*/React.createElement("p", {
+    class: "mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl"
+  }, "This will start the server and open your app in your browser. You can now edit your app and see the changes after saving and refreshing the tab. You will want to first open page.js (or page.tsx) and edit the title and description in the exports."), /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
+    class: "language-javascript"
+  }, `const page = {
+  render: render, //necessary
+  state: state, //necessary
+  init: init, //necessary
+  components: [], //optional
+  middleware: [], //optional
+  functions: [useEffect], //optional
+  title: "My Cool App", //necessary
+  description:
+    "My app is very cool, come check it out!", //necessary
+  css: [], //optional
+  js: [], //optional
+};`)), /*#__PURE__*/React.createElement("p", {
+    class: "mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl"
+  }, "As you can tell there are a lot of options for the page object. The render, state, and init functions are important and necessary. Editing them is optional, but it is required that they are exported. We'll go over the other options later."), /*#__PURE__*/React.createElement("h2", {
+    class: "mt-8 lg:mt-10 text-2xl sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-semibold"
+  }, "Writing the UI"), /*#__PURE__*/React.createElement("p", {
+    class: "mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl"
+  }, "Inside of the render function you will write the UI. The UI is written in JSX, but with the slight modification of using vanilla HTML attributes. For example, instead of using className, you will use class."), /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
     class: "language-jsx"
-  }, `<button \n  onclick={() => {variables.cookies++;render();}}\n  class="bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 mr-4"\n>\n  Component found in Root\n</button>\n<Button variables={variables}>Component found in components folder</Button>\n<h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 mb-4">\n  Cookies: {variables.cookies}\n</h1>`.replaceAll("<", "&lt;").replaceAll(">", "&gt;"))), /*#__PURE__*/React.createElement("button", {
-    class: "bg-violet-950 bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 mr-4",
-    onClick: () => {
+  }, `let ui = (
+  <div>
+    <h1 class="text-4xl">Hello World!</h1>
+  </div>
+);`.replaceAll(/</g, "&lt;").replaceAll(/>/g, "&gt;"))), /*#__PURE__*/React.createElement("p", {
+    class: "mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl"
+  }, "You'd obviously want functionality, and Subatomic.js makes this very intuitive. Let's create a cookie clicker example."), /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
+    class: "language-jsx"
+  }, `let ui = (
+  <div>
+    <h1 class="text-4xl">Cookie Clicker</h1>
+    <button
+      class="bg-violet-950  text-white font-bold py-2 px-4 rounded mt-4 mr-4"
+      onclick={() => {
+        variables.cookies++;
+        render();
+      }}
+    >
+      Click me!
+    </button>
+    <p>You have {variables.cookies} cookies</p>
+  </div>
+);`.replaceAll(/</g, "&lt;").replaceAll(/>/g, "&gt;"))), /*#__PURE__*/React.createElement("p", {
+    class: "mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl"
+  }, "This doesn't work yet, because we haven't defined what cookies is. You can do this in the state function, or define it when clicking instead."), /*#__PURE__*/React.createElement("pre", {
+    class: "language-javascript"
+  }, /*#__PURE__*/React.createElement("code", {
+    class: "language-jsx"
+  }, `function state() {
+  variables.cookies = 0;
+}`)), /*#__PURE__*/React.createElement("p", {
+    class: "mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl"
+  }, "Or:"), /*#__PURE__*/React.createElement("pre", {
+    class: "language-jsx"
+  }, /*#__PURE__*/React.createElement("code", null, `onclick={() => {
+  if (!variables.cookies) {
+    variables.cookies = 0;
+  }
+  variables.cookies++;
+  render();
+}}`)), /*#__PURE__*/React.createElement("p", {
+    class: "mt-4 lg:mt-6 sm:text-md md:text-lg lg:text-xl xl:text-2xl"
+  }, "Either way you have a working cookie clicker! That wasn't too hard wasn't it?"), /*#__PURE__*/React.createElement("h1", {
+    class: "text-4xl mt-4 lg:mt-6"
+  }, "Cookie Clicker"), /*#__PURE__*/React.createElement("button", {
+    class: "bg-violet-950  text-white font-bold py-2 px-4 rounded mt-4 mr-4",
+    onclick: () => {
       variables.cookies++;
       render();
     }
-  }, "Component found in Root"), /*#__PURE__*/React.createElement(Button, {
-    variables: variables
-  }, "Component found in components folder"), /*#__PURE__*/React.createElement("h1", {
-    class: "text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 mb-4"
-  }, "Cookies: ", variables.cookies), /*#__PURE__*/React.createElement("p", {
-    class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js makes development easy with JSX, and it also works with tailwind and removing unneccessary classes. State management is also seamless, you only have to pass the state object around the component tree."), /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
-    class: "language-jsx"
-  }, `<input\n  id=\"input\"\n  type=\"text\"\n  oninput={() => {\n    variables.input = this.value;\n  }}\n  value={variables.input}\n  class=\"border-2 border-gray-300 p-2 rounded\"\n/>\n<button\n  onclick={() => {\n    variables.todos.push(input.value);\n    render();\n  }}\n  class=\"bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4\"\n>\n  Add Todo\n</button>\n<button\n  onclick={() => {\n    variables.todos.pop();\n    render();\n  }}\n  class=\"bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4\"\n>\n  Remove Todo\n</button>\n<ul class=\"list-disc list-inside\">\n  {variables.todos.map((a) => {\n    return <li>{a}</li>;\n  })}\n</ul>`.replaceAll("<", "&lt;").replaceAll(">", "&gt;"))), /*#__PURE__*/React.createElement("input", {
-    id: "input",
-    type: "text",
-    oninput: () => {
-      variables.input = this.value;
-    },
-    value: variables.input,
-    class: "border-2 border-gray-300 p-2 rounded"
-  }), /*#__PURE__*/React.createElement("button", {
-    onclick: () => {
-      variables.todos.push(input.value);
-      render();
-    },
-    class: "bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 ml-2"
-  }, "Add Todo"), /*#__PURE__*/React.createElement("button", {
-    onclick: () => {
-      variables.todos.pop();
-      render();
-    },
-    class: "bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 ml-2"
-  }, "Remove Todo"), /*#__PURE__*/React.createElement("ul", {
-    class: "list-disc list-inside"
-  }, variables.todos.map(a => {
-    return /*#__PURE__*/React.createElement("li", null, a);
-  })), /*#__PURE__*/React.createElement("p", {
-    class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js comes with seemless state management with easy and familiar syntax. Instead of setting state, you just update the variables object and call the render function. This makes it so all native data types still work with their native methods."), /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
-    class: "language-jsx"
-  }, `async function fetchJSON(req, res, variables) {
-  const data = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-  const json = await data.json();
-  variables.json = json;
-  return variables;
-}
-            `)), /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
-    class: "language-jsx"
-  }, `{Object.keys(variables.json).map((a) => {
-  return (
-    <p>
-      {a}: {variables.json[a]}
-    </p>
-  );
-})}`.replaceAll("<", "&lt;").replaceAll(">", "&gt;"))), Object.keys(variables.json).map(a => {
-    return /*#__PURE__*/React.createElement("p", null, a, ": ", variables.json[a]);
-  }), /*#__PURE__*/React.createElement("p", {
-    class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js also comes with middleware functions that run before the page is built. This allows you to fetch data from an API or database that can end the process early and send a response to the client, or change the variables the client receives."), /*#__PURE__*/React.createElement("h1", {
-    class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold"
-  }, "So what are you waiting for?"), /*#__PURE__*/React.createElement("p", {
-    class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js is the perfect framework for creating dynamic web apps with SEO, performance, and interactivity."), /*#__PURE__*/React.createElement("button", {
-    class: "bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Tutorial")), /*#__PURE__*/React.createElement("footer", {
-    class: "shadow-lg p-4 text-center bg-gray-100"
-  }, "&copy Subatomic 2023"));
+  }, "Click me!"), /*#__PURE__*/React.createElement("p", null, "You have ", variables.cookies, " cookies")));
   // If the document object is defined (i.e., if this code is running in a browser environment)
   if (typeof document !== "undefined") {
     // Call the useEffect function with a function to log a message to the console and a dependencies array
-
-    useEffect(() => {
-      console.log("use effect to run side effects");
-    }, ["cookies"]);
     // Set the innerHTML of the body element to the UI string
     document.body.innerHTML = parseArray(ui);
-    if (typeof Prism === "object") {
-      console.log("highlighting");
-      Prism.highlightAll();
-    }
     // Update the effectVariables object with the current values of the variables
     Object.keys(variables).forEach(a => {
       effectVariables[a] = variables[a];
     });
+    if (typeof Prism === "object") {
+      console.log("highlighting");
+      Prism.highlightAll();
+    }
   }
   // If the build argument is true, return the UI string and the variables object
   if (build) {
@@ -164,20 +133,9 @@ function render(build, data) {
   }
 }
 
-// Call the state function to initialize the variables
-state();
-
-// Define a Cookies component that returns an h1 element with the number of cookies
-function Cookies() {
-  return `<h1>${variables.cookies}</h1>`;
-}
-
 // Define a state function to initialize the variables
 function state() {
   variables.cookies = 0;
-  variables.todos = [1, 2, 3, 4, 5];
-  variables.input = "";
-  variables.tset = "test";
 }
 
 // Define an init function
@@ -190,9 +148,9 @@ const page = {
   render: render,
   state: state,
   init: init,
-  components: [Cookies, Button],
-  middleware: [fetchJSON],
-  functions: [useEffect, handleChange],
+  components: [Navbar],
+  middleware: [],
+  functions: [useEffect],
   title: "App created with Subatomic.js",
   description: "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dyanmic web apps.",
   css: ["https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css"],

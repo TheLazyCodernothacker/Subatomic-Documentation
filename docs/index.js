@@ -1,5 +1,4 @@
 // Import necessary modules
-require("module-alias/register");
 const { exec } = require("child_process");
 const express = require("express");
 const app = express();
@@ -84,7 +83,12 @@ function initPages() {
       const filePath = path.join(directory, file);
       if (fs.statSync(filePath).isDirectory()) {
         readDirectory(filePath);
-      } else if (filePath.includes("page.js")) {
+      } else if (
+        filePath.includes("page.js") ||
+        filePath.includes("page.tsx") ||
+        filePath.includes("page.ts") ||
+        filePath.includes("page.jsx")
+      ) {
         pages.push(filePath);
       }
     });
@@ -104,10 +108,8 @@ function initPages() {
   pages.forEach((page) => {
     let routes = page.split(path.sep);
     routes.pop();
-    console.log(routes);
     routes.shift();
     routes.shift();
-    console.log(routes);
     // Check for duplicate routes
     let setRoutes = new Set(routes);
     if (setRoutes.size !== routes.length) {
@@ -116,7 +118,6 @@ function initPages() {
     }
 
     // If there are routes, set up the route for the page
-    console.log(routes);
     if (routes.length !== 0) {
       let getRoutes = routes.map((route) => {
         if (route[0] === "[" && route[route.length - 1] === "]") {
@@ -124,16 +125,14 @@ function initPages() {
         }
         return route;
       });
-      console.log(getRoutes);
+      console.log(getRoutes.join("/"));
       app.get(`/${getRoutes.join("/")}`, (req, res) => {
         let parameters = {};
-        console.log(getRoutes);
         getRoutes.forEach((a, i) => {
           if (a[0] === ":") {
             parameters[a.replace(":", "")] = req.params[a.replace(":", "")];
           }
         });
-        console.log(parameters);
         import(`./lib/pages/${routes.join("/")}/page.mjs`).then((a) => {
           handleImport(req, res, a, parameters);
         });

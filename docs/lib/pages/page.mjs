@@ -1,6 +1,7 @@
 // Import necessary modules
 import React from "../../createElement.js";
 import Button from "../components/Button.mjs";
+import Navbar from "../components/Navbar.mjs";
 
 // Initialize an empty variables object
 let variables = {};
@@ -31,17 +32,7 @@ function render(build, data) {
   }
 
   // Define the UI using JSX-like syntax
-  let ui = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("nav", {
-    class: "p-4 shadow-lg"
-  }, /*#__PURE__*/React.createElement("ul", {
-    class: "flex space-x-4"
-  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "/",
-    class: "hover:bg-gray-100 px-4 py-3 rounded"
-  }, "Home")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "/tutorial",
-    class: "hover:bg-gray-100 px-4 py-3 rounded"
-  }, "Tutorial")))), /*#__PURE__*/React.createElement("header", {
+  let ui = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Navbar, null), /*#__PURE__*/React.createElement("header", {
     class: "p-2 sm:p-6 md:p-8 lg:p-12 xl:p-16 flex flex-wrap"
   }, /*#__PURE__*/React.createElement("div", {
     class: "basis-96 grow"
@@ -49,10 +40,11 @@ function render(build, data) {
     class: "font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
   }, "Subatomic.js"), /*#__PURE__*/React.createElement("p", {
     class: "text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dynamic web apps."), /*#__PURE__*/React.createElement("a", {
-    href: "/tutorial",
+  }, "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dynamic web apps."), /*#__PURE__*/React.createElement("button", {
     class: "bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Tutorial")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "/tutorial"
+  }, "Tutorial"))), /*#__PURE__*/React.createElement("div", {
     class: "basis-32 grow flex align-center justify-center"
   }, /*#__PURE__*/React.createElement("img", {
     src: "/logo.svg",
@@ -72,7 +64,7 @@ function render(build, data) {
     class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold mb-4"
   }, "Let's see it in action!"), /*#__PURE__*/React.createElement("pre", null, /*#__PURE__*/React.createElement("code", {
     class: "language-jsx"
-  }, `<button \n  onclick={() => {variables.cookies++;render();}}\n  class="bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 mr-4"\n>\n  Component found in Root\n</button>\n<Button variables={variables}>Component found in components folder</Button>\n<h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 mb-4">\n  Cookies: {variables.cookies}\n</h1>`.replaceAll("<", "&lt;").replaceAll(">", "&gt;"))), /*#__PURE__*/React.createElement("button", {
+  }, `<button \n  onclick={() => {variables.cookies++;render();}}\n  class="bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 mr-4"\n>\n  Component found in Root\n</button>\n<Button variables={variables} />\n<h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 mb-4">\n  Cookies: {variables.cookies}\n</h1>`.replaceAll("<", "&lt;").replaceAll(">", "&gt;"))), /*#__PURE__*/React.createElement("button", {
     class: "bg-violet-950 bg-violet-950 text-white font-bold py-2 px-4 rounded mt-4 mr-4",
     onClick: () => {
       variables.cookies++;
@@ -80,7 +72,7 @@ function render(build, data) {
     }
   }, "Component found in Root"), /*#__PURE__*/React.createElement(Button, {
     variables: variables
-  }, "Component found in components folder"), /*#__PURE__*/React.createElement("h1", {
+  }), /*#__PURE__*/React.createElement("h1", {
     class: "text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 mb-4"
   }, "Cookies: ", variables.cookies), /*#__PURE__*/React.createElement("p", {
     class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
@@ -136,10 +128,11 @@ function render(build, data) {
     class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold"
   }, "So what are you waiting for?"), /*#__PURE__*/React.createElement("p", {
     class: "text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Subatomic.js is the perfect framework for creating dynamic web apps with SEO, performance, and interactivity."), /*#__PURE__*/React.createElement("a", {
-    href: "/tutorial",
-    lass: "bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
-  }, "Tutorial")), /*#__PURE__*/React.createElement("footer", {
+  }, "Subatomic.js is the perfect framework for creating dynamic web apps with SEO, performance, and interactivity."), /*#__PURE__*/React.createElement("button", {
+    class: "bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "/tutorial"
+  }, "Tutorial"))), /*#__PURE__*/React.createElement("footer", {
     class: "shadow-lg p-4 text-center bg-gray-100"
   }, "&copy Subatomic 2023"));
   // If the document object is defined (i.e., if this code is running in a browser environment)
@@ -171,7 +164,7 @@ state();
 
 // Define a Cookies component that returns an h1 element with the number of cookies
 function Cookies() {
-  return `<h1>${variables.cookies}</h1>`;
+  return /*#__PURE__*/React.createElement("h1", null, "Cookies: ", variables.cookies);
 }
 
 // Define a state function to initialize the variables
@@ -192,7 +185,7 @@ const page = {
   render: render,
   state: state,
   init: init,
-  components: [Cookies, Button],
+  components: [Cookies, Button, Navbar],
   middleware: [fetchJSON],
   functions: [useEffect, handleChange],
   title: "App created with Subatomic.js",
