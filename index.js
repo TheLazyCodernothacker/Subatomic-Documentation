@@ -6,12 +6,67 @@ const port = 3001;
 const fs = require("fs");
 const path = require("path");
 const React = require("./createElement.js");
-const ejs = require("ejs");
-app.set("view engine", "ejs");
+const minify = require("html-minifier").minify;
+const compression = require("compression");
+const session = require("express-session");
+const initApis = require("./api.js");
+const serverless = require("serverless-http");
+
+initApis(app);
+
+
+app.use(
+  session({
+    secret: "your_secret_key", // replace 'your_secret_key' with your actual secret key
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+require("dotenv").config();
+
+const passport = require("passport");
+const GitHubStrategy = require("passport-github").Strategy;
+
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: "http://localhost:3001/auth/github/callback",
+    },
+    function (accessToken, refreshToken, profile, cb) {
+      // Find or create a user in your database and call `cb` with the user
+      // For now, we'll just return the profile
+      cb(null, profile);
+    }
+  )
+);
+
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+  done(null, user);
+});
 
 // Serve static files from the 'public' directory
-app.use(express.static("public"));
+app.use(compression());
+app.use(passport.initialize());
+app.use(passport.session());
 
+app.get("/auth/github", passport.authenticate("github"));
+
+app.get(
+  "/auth/github/callback",
+  passport.authenticate("github", { failureRedirect: "/login" }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  }
+);
+
+app.use(express.static("public"));
 // Function to handle the import of a page
 async function handleImport(req, res, a, parameters) {
   try {
@@ -168,9 +223,6 @@ app.listen(port, () => {
 });
 
 // Function to parse an array
-function parseArray(root, build) {
-  return root;
-}
 
 // Function to build a page
 function build(
@@ -185,24 +237,73 @@ function build(
 ) {
   // Render the page and get the variables
   let [ui, variables] = render(true, data, React);
-  let newData = {
-    variables: variables,
-    render: render,
-    state: state,
-    init: init,
-    components: components,
-    functions: functions,
-    title: title,
-    components: components,
-    description: description,
-    js: data.js,
-    css: data.css,
-    ui: ui,
-    createElement: React.createElement,
-    finalUI: parseArray(ui, true),
-    parseArray: parseArray,
-  };
-  data.res.render("main", newData);
+  let content = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/output.css">
+  ${data.css
+    .map((a) => {
+      return `<link rel="stylesheet" href="${a}">`;
+    })
+    .join("")}
+   ${data.js
+     .map((a) => {
+       return `<script defer src="${a}"></script>`;
+     })
+     .join("")}
+  <title>${title}</title>
+  <meta name="description" content="${description}">
+
+</head>
+<body>
+  ${ui}
+  <script>
+  React = {createElement: ${React.createElement.toString()}}
+      ${state.toString()}
+    ${render.toString()}
+    ${init.toString()}
+    ${components
+      .map((a) => {
+        return `${a.toString()}`;
+      })
+      .join(";")}
+      ${functions
+        .map((a) => {
+          return `${a.toString()}`;
+        })
+        .join(";")}
+let variables = {${Object.keys(variables).map((a) => {
+    return `${a}: ${
+      typeof variables[a] === "function"
+        ? variables[a].toString()
+        : JSON.stringify(variables[a])
+    }`;
+  })}};
+let effectVariables = {};
+    render();
+    init();
+  </script>
+</body>
+</html>`;
+  let contentBuild = minify(content, {
+    collapseWhitespace: true,
+    collapseInlineTagWhitespace: true,
+    removeComments: true,
+    removeEmptyAttributes: true,
+    removeOptionalTags: true,
+    removeRedundantAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    useShortDoctype: true,
+    minifyJS: { inline: true }, // Modify this line
+    minifyCSS: { inline: true }, // Modify this line
+    minifyURLs: true,
+  });
+
+  data.res.send(contentBuild);
   // Build the HTML content
 }
 
@@ -210,3 +311,5 @@ function build(
 app.get("*", (req, res) => {
   res.status(404).send("404 Page not found!");
 });
+
+module.exports.handler = serverless(app);

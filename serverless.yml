@@ -1,0 +1,9 @@
+service:
+  name: your-express-app
+
+provider:
+  name: vercel
+
+functions:
+  app:
+    handler: index.handler
