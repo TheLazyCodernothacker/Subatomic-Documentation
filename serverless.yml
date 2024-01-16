@@ -1,5 +1,5 @@
-service:
-  name: your-express-app
+# Corrected serverless.yml
+service: my-express-app
 
 provider:
   name: vercel
