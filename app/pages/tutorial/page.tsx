@@ -512,7 +512,7 @@ module.exports = initApis;`}
         .catch((e) => {});
     }, []);
     // Set the innerHTML of the body element to the UI string
-    document.body.innerHTML = parseArray(ui);
+    document.body.innerHTML = ui;
     // Update the effectVariables object with the current values of the variables
     Object.keys(variables).forEach((a) => {
       effectVariables[a] = variables[a];
