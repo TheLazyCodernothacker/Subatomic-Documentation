@@ -39,8 +39,8 @@ function render(build, data) {
             Subatomic.js
           </h1>
           <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10">
-            Subatomic.js is a minimalistic JS framework with PSR and SSR for
-            creating dynamic web apps.
+            Subatomic.js is a minimalistic JS framework with Pre-rendering and
+            SSR for creating dynamic web apps.
           </p>
           <button class="bg-violet-950 text-white rounded px-4 py-2 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10">
             <a href="/tutorial">Tutorial</a>
@@ -55,9 +55,10 @@ function render(build, data) {
           SEO, Performance, and Interactivity
         </h1>
         <p class="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-4 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10">
-          Subatomic.js uses PSR to make sure your dynamic content is indexed by
-          search bots and SSR to make data fetching and rendering faster. You
-          also get to have interactivity without sacrificing SEO or performance.
+          Subatomic.js uses Pre-rendering to make sure your dynamic content is
+          indexed by search bots and SSR to make data fetching and rendering
+          faster. You also get to have interactivity without sacrificing SEO or
+          performance.
         </p>
         <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12 font-semibold">
           JSX and Express
@@ -252,7 +253,7 @@ const page = {
   functions: [useEffect, handleChange],
   title: "App created with Subatomic.js",
   description:
-    "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dyanmic web apps.",
+    "Subatomic.js is a minimalistic JS framework with Pre-rendering and SSR for creating dyanmic web apps.",
   css: [
     "https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css",
   ],

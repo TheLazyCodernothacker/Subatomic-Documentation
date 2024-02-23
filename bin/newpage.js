@@ -65,7 +65,7 @@ const page = {
   functions: [useEffect],
   title: "App created with Subatomic.js",
   description:
-    "Subatomic.js is a minimalistic JS framework with PSR and SSR for creating dyanmic web apps.",
+    "Subatomic.js is a minimalistic JS framework with Pre-rendering and SSR for creating dyanmic web apps.",
   css: [],
   js: [],
 };
@@ -92,10 +92,9 @@ function useEffect(func, deps) {
 export default page;
 `;
 
-
 let pagePath = "../app/pages/" + pageName;
 pagePath += pageName.includes("/page.js") ? "" : "/page.js";
-if(pageName === "./"){
+if (pageName === "./") {
   pagePath = "/app/pages/page.js";
 }
 
